@@ -1,6 +1,6 @@
 const screen = document.querySelector('.screen');
 
-let display = '';
+let display = '0';
 let firstOperand = 0;
 let lastOperator = '';
 
@@ -41,13 +41,13 @@ function operate(operator, n1, n2) {
 
         case '/':
             result = divide(n1, n2);
-            result = Math.round(result * 10) / 10
             break;
     
         default:
             break;
     }
 
+    result = Math.round(result * 100) / 100;
     return result;
 }
 
@@ -72,8 +72,12 @@ function linkButtons() {
 
 function displayValue(e) {
 
-    if(screen.textContent == '0'){
+    if(screen.textContent == '0' && e.target.textContent != '.'){
         screen.textContent = '';
+    }
+
+    if(screen.textContent.includes('.') && e.target.textContent == '.'){
+        return;
     }
 
     display += e.target.textContent;
@@ -107,7 +111,7 @@ function calculate() {
 
 function reset() {
     screen.textContent = '0';
-    display = '';
+    display = '0';
     lastOperator = '';
     firstOperand = 0;
 }
