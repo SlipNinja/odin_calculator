@@ -41,6 +41,7 @@ function operate(operator, n1, n2) {
 
         case '/':
             result = divide(n1, n2);
+            result = Math.round(result * 10) / 10
             break;
     
         default:
