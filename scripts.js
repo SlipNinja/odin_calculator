@@ -48,6 +48,11 @@ function operate(operator, n1, n2) {
     }
 
     result = Math.round(result * 100) / 100;
+
+    if(isNaN(result)){
+        result = 0;
+    }
+
     return result;
 }
 
